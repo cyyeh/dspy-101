@@ -1,10 +1,8 @@
 # DSPy 101
 
-- [Table of Contents](intro.ipynb)
-    - What you will learn
-    - Core Concepts
-    - Building Blocks
-    - Recommended Workflow
-    - Examples
-    - Roadmap
-    - References
+- [What you will learn](intro.ipynb)
+    - The core concepts of DSPy
+    - Understanding the building blocks of DSPy
+    - How to use DSPy in practice and recommended workflow
+    - Enable to trace DSPy internals
+    - Future roadmap of DSPy
