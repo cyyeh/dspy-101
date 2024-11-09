@@ -7538,8 +7538,7 @@ main {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Language-Models">Language Models<a class="anchor-link" href="#Language-Models">¶</a></h3><p>Notes:</p>
-<ul>
+<h3 id="Language-Models">Language Models<a class="anchor-link" href="#Language-Models">¶</a></h3><ul>
 <li>Earlier versions of DSPy involved tens of clients for different LM providers.(deprecated, and will be removed in DSPy 2.6) Starting from 2.5, use <code>dspy.LM</code> instead(using litellm under the hood)</li>
 <li>Adapters<ul>
 <li>DSPy 2.5 introduces <strong>Adapters</strong> as a layer between Signatures and LMs, responsible for formatting these pieces (Signature I/O fields, instructions, and examples) as well as generating and parsing the outputs.</li>
@@ -7547,11 +7546,6 @@ main {
 </li>
 <li>By default LMs in DSPy are cached. If you repeat the same call, you will get the same outputs. But you can turn off caching by setting <code>cache=False</code> while declaring <code>dspy.LM</code> object</li>
 <li>Any OpenAI-compatible endpoint is easy to set up with an <code>openai/</code> prefix as well.</li>
-</ul>
-<p>References:</p>
-<ul>
-<li>documentation: <a href="https://dspy-docs.vercel.app/building-blocks/1-language_models/">https://dspy-docs.vercel.app/building-blocks/1-language_models/</a></li>
-<li>source code: <a href="https://github.com/stanfordnlp/dspy/blob/main/dspy/clients/lm.py">https://github.com/stanfordnlp/dspy/blob/main/dspy/clients/lm.py</a></li>
 </ul>
 </div>
 </div>
@@ -7864,23 +7858,7 @@ main {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Signatures">Signatures<a class="anchor-link" href="#Signatures">¶</a></h3><p>Notes:</p>
-<ul>
-<li>inline-based signature prompt creation
-<img alt="" src="https://dspy-docs.vercel.app/deep-dive/signature/img/prompt_creation.png"/></li>
-<li>class-based signature prompt creation
-<img alt="" src="https://dspy-docs.vercel.app/deep-dive/signature/img/class_based_prompt_creation.png"/></li>
-</ul>
-<p>References:</p>
-<ul>
-<li>documentation<ul>
-<li><a href="https://dspy-docs.vercel.app/building-blocks/2-signatures/">https://dspy-docs.vercel.app/building-blocks/2-signatures/</a></li>
-<li><a href="https://dspy-docs.vercel.app/deep-dive/signature/understanding-signatures/">https://dspy-docs.vercel.app/deep-dive/signature/understanding-signatures/</a></li>
-<li><a href="https://dspy-docs.vercel.app/deep-dive/signature/executing-signatures/">https://dspy-docs.vercel.app/deep-dive/signature/executing-signatures/</a></li>
-</ul>
-</li>
-<li>source code: <a href="https://github.com/stanfordnlp/dspy/tree/main/dspy/signatures">https://github.com/stanfordnlp/dspy/tree/main/dspy/signatures</a></li>
-</ul>
+<h3 id="Signatures">Signatures<a class="anchor-link" href="#Signatures">¶</a></h3>
 </div>
 </div>
 </div>
@@ -8055,8 +8033,7 @@ main {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Modules">Modules<a class="anchor-link" href="#Modules">¶</a></h3><p>Notes:</p>
-<ul>
+<h3 id="Modules">Modules<a class="anchor-link" href="#Modules">¶</a></h3><ul>
 <li>A DSPy module is a building block for programs that use LMs.<ul>
 <li>Each built-in module abstracts a prompting technique (like chain of thought or ReAct). Crucially, they are generalized to handle any DSPy Signature.</li>
 <li>A DSPy module has learnable parameters (i.e., the little pieces comprising the prompt and the LM weights) and can be invoked (called) to process inputs and return outputs.</li>
@@ -8106,29 +8083,6 @@ main {
 <li>DSPy is just Python code that uses modules in any control flow you like. (There's some magic internally at <code>compile</code> time to trace your LM calls.)</li>
 <li>This means that, you can just call the modules freely. No weird abstractions for chaining calls.</li>
 <li>This is basically PyTorch's design approach for define-by-run / dynamic computation graphs. Refer to the intro tutorials for examples.</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div></section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>References:</p>
-<ul>
-<li>documentation:<ul>
-<li><a href="https://dspy-docs.vercel.app/building-blocks/3-modules/">https://dspy-docs.vercel.app/building-blocks/3-modules/</a></li>
-<li><a href="https://dspy-docs.vercel.app/deep-dive/modules/guide">https://dspy-docs.vercel.app/deep-dive/modules/guide</a></li>
-</ul>
-</li>
-<li>source code:<ul>
-<li><a href="https://github.com/stanfordnlp/dspy/blob/main/dspy/primitives/module.py">https://github.com/stanfordnlp/dspy/blob/main/dspy/primitives/module.py</a></li>
-<li><a href="https://github.com/stanfordnlp/dspy/tree/main/dspy/predict">https://github.com/stanfordnlp/dspy/tree/main/dspy/predict</a></li>
 </ul>
 </li>
 </ul>
@@ -8193,8 +8147,7 @@ main {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Data">Data<a class="anchor-link" href="#Data">¶</a></h3><p>Notes:</p>
-<ul>
+<h3 id="Data">Data<a class="anchor-link" href="#Data">¶</a></h3><ul>
 <li>DSPy is a machine learning framework, so working in it involves training sets, development sets, and test sets.<ul>
 <li>For each example in your data, we distinguish typically between three types of values: the inputs, the intermediate labels, and the final label. You can use DSPy effectively without any intermediate or final labels, but you will need at least a few example inputs.</li>
 </ul>
@@ -8245,31 +8198,6 @@ main {
 <li><code>DataLoader().from_huggingface(...)</code></li>
 </ul>
 </li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div></section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>References:</p>
-<ul>
-<li>documentation:<ul>
-<li><a href="https://dspy-docs.vercel.app/building-blocks/4-data/">https://dspy-docs.vercel.app/building-blocks/4-data/</a></li>
-<li><a href="https://dspy-docs.vercel.app/deep-dive/data-handling/built-in-datasets/">https://dspy-docs.vercel.app/deep-dive/data-handling/built-in-datasets/</a></li>
-<li><a href="https://dspy-docs.vercel.app/deep-dive/data-handling/loading-custom-data/">https://dspy-docs.vercel.app/deep-dive/data-handling/loading-custom-data/</a></li>
-</ul>
-</li>
-<li>source code:<ul>
-<li><a href="https://github.com/stanfordnlp/dspy/blob/main/dspy/primitives/example.py">https://github.com/stanfordnlp/dspy/blob/main/dspy/primitives/example.py</a></li>
-<li><a href="https://github.com/stanfordnlp/dspy/blob/main/dspy/datasets/dataset.py">https://github.com/stanfordnlp/dspy/blob/main/dspy/datasets/dataset.py</a></li>
-<li><a href="https://github.com/stanfordnlp/dspy/blob/main/dspy/datasets/dataloader.py">https://github.com/stanfordnlp/dspy/blob/main/dspy/datasets/dataloader.py</a></li>
 </ul>
 </li>
 </ul>
@@ -8396,18 +8324,12 @@ main {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Metrics">Metrics<a class="anchor-link" href="#Metrics">¶</a></h3><p>Notes:</p>
-<ul>
+<h3 id="Metrics">Metrics<a class="anchor-link" href="#Metrics">¶</a></h3><ul>
 <li>What is a metric and how do I define a metric for my task?<ul>
 <li>A metric is just a function that will take examples from your data and the output of your system and return a score that quantifies how good the output is.</li>
 <li>For simple tasks, this could be just "accuracy" or "exact match" or "F1 score". This may be the case for simple classification or short-form QA tasks. However, for most applications, your system will output long-form outputs. There, your metric should probably be a smaller DSPy program that checks multiple properties of the output (quite possibly using AI feedback from LMs).</li>
 </ul>
 </li>
-</ul>
-<p>References:</p>
-<ul>
-<li>documentation: <a href="https://dspy-docs.vercel.app/building-blocks/5-metrics/">https://dspy-docs.vercel.app/building-blocks/5-metrics/</a></li>
-<li>source code: <a href="https://github.com/stanfordnlp/dspy/tree/main/dspy/evaluate">https://github.com/stanfordnlp/dspy/tree/main/dspy/evaluate</a></li>
 </ul>
 </div>
 </div>
@@ -8549,15 +8471,14 @@ main {
 </div>
 </div>
 </div>
-</div>
+</div></div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Optimizers(formerly-Teleprompters)">Optimizers(formerly Teleprompters)<a class="anchor-link" href="#Optimizers(formerly-Teleprompters)">¶</a></h3><p>Notes:</p>
-<ul>
+<h3 id="Optimizers(formerly-Teleprompters)">Optimizers(formerly Teleprompters)<a class="anchor-link" href="#Optimizers(formerly-Teleprompters)">¶</a></h3><ul>
 <li>A DSPy optimizer is an algorithm that can tune the parameters of a DSPy program (i.e., the prompts and/or the LM weights) to maximize the metrics you specify, like accuracy.<ul>
 <li>There are many built-in optimizers in DSPy, which apply vastly different strategies. A typical DSPy optimizer takes three things:</li>
 <li>Your DSPy program. This may be a single module (e.g., dspy.Predict) or a complex multi-module program.</li>
@@ -8565,12 +8486,36 @@ main {
 <li>A few training inputs. This may be very small (i.e., only 5 or 10 examples) and incomplete (only inputs to your program, without any labels).</li>
 </ul>
 </li>
+</ul>
+</div>
+</div>
+</div>
+</div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ul>
 <li>What does a DSPy Optimizer tune? How does it tune them?<ul>
 <li>DSPy programs consist of multiple calls to LMs, stacked together as [DSPy modules]. Each DSPy module has internal parameters of three kinds: (1) the LM weights, (2) the instructions, and (3) demonstrations of the input/output behavior.</li>
 <li>Given a metric, DSPy can optimize all of these three with multi-stage optimization algorithms. These can combine gradient descent (for LM weights) and discrete LM-driven optimization, i.e. for crafting/updating instructions and for creating/validating demonstrations. DSPy Demonstrations are like few-shot examples, but they're far more powerful. They can be created from scratch, given your program, and their creation and selection can be optimized in many effective ways.</li>
 <li>In many cases, we found that compiling leads to better prompts than human writing. Not because DSPy optimizers are more creative than humans, but simply because they can try more things, much more systematically, and tune the metrics directly.</li>
 </ul>
 </li>
+</ul>
+</div>
+</div>
+</div>
+</div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ul>
 <li>Which optimizer should I use?<ul>
 <li>Ultimately, finding the ‘right’ optimizer to use &amp; the best configuration for your task will require experimentation. Success in DSPy is still an iterative process - getting the best performance on your task will require you to explore and iterate.</li>
 <li>That being said, here's the general guidance on getting started:<ul>
@@ -8584,121 +8529,10 @@ main {
 </ul>
 </li>
 </ul>
-<p>References:</p>
-<ul>
-<li>documentation: <a href="https://dspy-docs.vercel.app/building-blocks/6-optimizers/">https://dspy-docs.vercel.app/building-blocks/6-optimizers/</a></li>
-<li>source code: <a href="https://github.com/stanfordnlp/dspy/tree/main/dspy/teleprompt">https://github.com/stanfordnlp/dspy/tree/main/dspy/teleprompt</a></li>
-</ul>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="Automatic-Few-Shot-Learning">Automatic Few-Shot Learning<a class="anchor-link" href="#Automatic-Few-Shot-Learning">¶</a></h4>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<ol>
-<li><p><code>LabeledFewShot</code>: Simply constructs few-shot examples (demos) from provided labeled input and output data points. Requires k (number of examples for the prompt) and trainset to randomly select k examples from.</p>
-</li>
-<li><p><code>BootstrapFewShot</code>: Uses a teacher module (which defaults to your program) to generate complete demonstrations for every stage of your program, along with labeled examples in trainset. Parameters include max_labeled_demos (the number of demonstrations randomly selected from the trainset) and max_bootstrapped_demos (the number of additional examples generated by the teacher). The bootstrapping process employs the metric to validate demonstrations, including only those that pass the metric in the "compiled" prompt. Advanced: Supports using a teacher program that is a different DSPy program that has compatible structure, for harder tasks.</p>
-</li>
-<li><p><code>BootstrapFewShotWithRandomSearch</code>: Applies BootstrapFewShot several times with random search over generated demonstrations, and selects the best program over the optimization. Parameters mirror those of BootstrapFewShot, with the addition of num_candidate_programs, which specifies the number of random programs evaluated over the optimization, including candidates of the uncompiled program, LabeledFewShot optimized program, BootstrapFewShot compiled program with unshuffled examples and num_candidate_programs of BootstrapFewShot compiled programs with randomized example sets.</p>
-</li>
-<li><p><code>KNNFewShot</code>: Uses k-Nearest Neighbors algorithm to find the nearest training example demonstrations for a given input example. These nearest neighbor demonstrations are then used as the trainset for the BootstrapFewShot optimization process. See this notebook for an example.</p>
-</li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="Automatic-Instruction-Optimization">Automatic Instruction Optimization<a class="anchor-link" href="#Automatic-Instruction-Optimization">¶</a></h4>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<ol>
-<li><p><code>COPRO</code>: Generates and refines new instructions for each step, and optimizes them with coordinate ascent (hill-climbing using the metric function and the trainset). Parameters include depth which is the number of iterations of prompt improvement the optimizer runs over.</p>
-</li>
-<li><p><code>MIPROv2</code>: Generates instructions and few-shot examples in each step. The instruction generation is data-aware and demonstration-aware. Uses Bayesian Optimization to effectively search over the space of generation instructions/demonstrations across your modules.</p>
-</li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="Automatic-Finetuning">Automatic Finetuning<a class="anchor-link" href="#Automatic-Finetuning">¶</a></h4>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<ol>
-<li><code>BootstrapFinetune</code>: Distills a prompt-based DSPy program into weight updates (for smaller LMs). The output is a DSPy program that has the same steps, but where each step is conducted by a finetuned model instead of a prompted LM.</li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="Program-Transformations">Program Transformations<a class="anchor-link" href="#Program-Transformations">¶</a></h4>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<ol>
-<li><code>Ensemble</code>: Ensembles a set of DSPy programs and either uses the full set or randomly samples a subset into a single program.</li>
-</ol>
-</div>
-</div>
-</div>
-</div>
+</div></section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -8709,7 +8543,7 @@ main {
 </div>
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -8720,16 +8554,6 @@ main {
 <p>You can add save_field_meta to additionally save the list of fields with the keys, name, field_type, description, and prefix with: <code>optimized_program.save(YOUR_SAVE_PATH, save_field_meta=True)</code>.</p>
 <div class="highlight"><pre><span></span><span class="n">optimized_program</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">YOUR_SAVE_PATH</span><span class="p">)</span>
 </pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Loading a program:</p>
 <div class="highlight"><pre><span></span><span class="n">loaded_program</span> <span class="o">=</span> <span class="n">YOUR_PROGRAM_CLASS</span><span class="p">()</span>
 <span class="n">loaded_program</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">YOUR_SAVE_PATH</span><span class="p">)</span>
@@ -8737,50 +8561,43 @@ main {
 </div>
 </div>
 </div>
-</div>
+</div></div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Assertions">Assertions<a class="anchor-link" href="#Assertions">¶</a></h3><p>Notes:</p>
-<ul>
+<h3 id="Assertions">Assertions<a class="anchor-link" href="#Assertions">¶</a></h3><ul>
 <li>Why and What is DSPy Assertions?<ul>
 <li>Despite the growth of techniques like fine-tuning or “prompt engineering”, these approaches are extremely tedious and rely on heavy, manual hand-waving to guide the LMs in adhering to specific constraints. Even DSPy's modularity of programming prompting pipelines lacks mechanisms to effectively and automatically enforce these constraints.</li>
 <li>To address this, we introduce DSPy Assertions, a feature within the DSPy framework designed to automate the enforcement of computational constraints on LMs. DSPy Assertions empower developers to guide LMs towards desired outcomes with minimal manual intervention, enhancing the reliability, predictability, and correctness of LM outputs.</li>
 </ul>
 </li>
+<li>It is recommended to define a program with assertions separately than your original program if you are doing comparative evaluation for the effect of assertions. If not, feel free to set Assertions away!</li>
+</ul>
+</div>
+</div>
+</div>
+</div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ul>
 <li><code>dspy.Assert</code> and <code>dspy.Suggest</code> API<ul>
-<li>when a constraint is not met:<ul>
-<li>Backtracking Mechanism: An under-the-hood backtracking is initiated, offering the model a chance to self-refine and proceed, which is done through</li>
-<li>Dynamic Signature Modification: internally modifying your DSPy program’s Signature by adding the following fields:<ul>
-<li>Past Output: your model's past output that did not pass the validation_fn</li>
-<li>Instruction: your user-defined feedback message on what went wrong and what possibly to fix</li>
-</ul>
-</li>
-<li>If the error continues past the <code>max_backtracking_attempts</code>, then <code>dspy.Assert</code> will halt the pipeline execution, altering you with an <code>dspy.AssertionError</code>. This ensures your program doesn't continue executing with “bad” LM behavior and immediately highlights sample failure outputs for user assessment.</li>
-</ul>
-</li>
-<li><code>dspy.Suggest</code> vs. <code>dspy.Assert</code>:<ul>
-<li><code>dspy.Suggest</code> on the other hand offers a softer approach. It maintains the same retry backtracking as <code>dspy.Assert</code> but instead serves as a gentle nudger. If the model outputs cannot pass the model constraints after the <code>max_backtracking_attempts</code>, <code>dspy.Suggest</code> will log the persistent failure and continue execution of the program on the rest of the data. This ensures the LM pipeline works in a "best-effort" manner without halting execution.</li>
+<li><code>dspy.Suggest</code> offers a softer approach. It maintains the same retry backtracking as <code>dspy.Assert</code> but instead serves as a gentle nudger. If the model outputs cannot pass the model constraints after the <code>max_backtracking_attempts</code>, <code>dspy.Suggest</code> will log the persistent failure and continue execution of the program on the rest of the data. This ensures the LM pipeline works in a "best-effort" manner without halting execution.</li>
 <li><code>dspy.Suggest</code> are best utilized as "helpers" during the evaluation phase, offering guidance and potential corrections without halting the pipeline.</li>
 <li><code>dspy.Assert</code> are recommended during the development stage as "checkers" to ensure the LM behaves as expected, providing a robust mechanism for identifying and addressing errors early in the development cycle.</li>
 </ul>
 </li>
 </ul>
-</li>
-<li>It is recommended to define a program with assertions separately than your original program if you are doing comparative evaluation for the effect of assertions. If not, feel free to set Assertions away!</li>
-</ul>
-<p>References:</p>
-<ul>
-<li>documentation: <a href="https://dspy-docs.vercel.app/deep-dive/assertions/">https://dspy-docs.vercel.app/deep-dive/assertions/</a></li>
-<li>source code: <a href="https://github.com/stanfordnlp/dspy/blob/main/dspy/primitives/assertions.py">https://github.com/stanfordnlp/dspy/blob/main/dspy/primitives/assertions.py</a></li>
-</ul>
 </div>
 </div>
 </div>
-</div>
+</div></section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -8791,7 +8608,7 @@ main {
 </div>
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -8799,12 +8616,7 @@ main {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SimplifiedBaleenAssertions</span><span class="p">(</span><span class="n">dspy</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">passages_per_hop</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">max_hops</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">generate_query</span> <span class="o">=</span> <span class="p">[</span><span class="n">dspy</span><span class="o">.</span><span class="n">ChainOfThought</span><span class="p">(</span><span class="n">GenerateSearchQuery</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_hops</span><span class="p">)]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">retrieve</span> <span class="o">=</span> <span class="n">dspy</span><span class="o">.</span><span class="n">Retrieve</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="n">passages_per_hop</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">generate_answer</span> <span class="o">=</span> <span class="n">dspy</span><span class="o">.</span><span class="n">ChainOfThought</span><span class="p">(</span><span class="n">GenerateAnswer</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">max_hops</span> <span class="o">=</span> <span class="n">max_hops</span>
+    <span class="o">...</span>
 
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">question</span><span class="p">):</span>
         <span class="n">context</span> <span class="o">=</span> <span class="p">[]</span>
@@ -8826,21 +8638,12 @@ main {
                 <span class="n">target_module</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">generate_query</span>
             <span class="p">)</span>
 
-            <span class="n">prev_queries</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
-            <span class="n">passages</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span><span class="n">query</span><span class="p">)</span><span class="o">.</span><span class="n">passages</span>
-            <span class="n">context</span> <span class="o">=</span> <span class="n">deduplicate</span><span class="p">(</span><span class="n">context</span> <span class="o">+</span> <span class="n">passages</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="n">all_queries_distinct</span><span class="p">(</span><span class="n">prev_queries</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">passed_suggestions</span> <span class="o">+=</span> <span class="mi">1</span>
-
-        <span class="n">pred</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_answer</span><span class="p">(</span><span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">,</span> <span class="n">question</span><span class="o">=</span><span class="n">question</span><span class="p">)</span>
-        <span class="n">pred</span> <span class="o">=</span> <span class="n">dspy</span><span class="o">.</span><span class="n">Prediction</span><span class="p">(</span><span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">,</span> <span class="n">answer</span><span class="o">=</span><span class="n">pred</span><span class="o">.</span><span class="n">answer</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">pred</span>
+        <span class="o">...</span>
 </pre></div>
 </div>
 </div>
 </div>
-</div>
+</div></div></section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -8859,56 +8662,27 @@ main {
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="Assertion-Driven-Optimizations">Assertion-Driven Optimizations<a class="anchor-link" href="#Assertion-Driven-Optimizations">¶</a></h4>
+<h2 id="Recommended-Workflow">Recommended Workflow<a class="anchor-link" href="#Recommended-Workflow">¶</a></h2><ol>
+<li>Define your task</li>
+<li>Define your pipeline</li>
+<li>Explore a few examples</li>
+<li>Define your data</li>
+<li>Define your metric</li>
+<li>Collect preliminary "zero-shot" evaluations</li>
+<li>Compile with a DSPy optimizer</li>
+<li>Iterate</li>
+</ol>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>DSPy Assertions work with optimizations that DSPy offers, particularly with <code>BootstrapFewShotWithRandomSearch</code></p>
-<ul>
-<li>Compilation with Assertions This includes assertion-driven example bootstrapping and counterexample bootstrapping during compilation. The teacher model for bootstrapping few-shot demonstrations can make use of DSPy Assertions to offer robust bootstrapped examples for the student model to learn from during inference. In this setting, the student model does not perform assertion aware optimizations (backtracking and retry) during inference.</li>
-<li>Compilation + Inference with Assertions -This includes assertion-driven optimizations in both compilation and inference. Now the teacher model offers assertion-driven examples but the student can further optimize with assertions of its own during inference time.</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="n">teleprompter</span> <span class="o">=</span> <span class="n">BootstrapFewShotWithRandomSearch</span><span class="p">(</span>
-    <span class="n">metric</span><span class="o">=</span><span class="n">validate_context_and_answer_and_hops</span><span class="p">,</span>
-    <span class="n">max_bootstrapped_demos</span><span class="o">=</span><span class="n">max_bootstrapped_demos</span><span class="p">,</span>
-    <span class="n">num_candidate_programs</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
-<span class="p">)</span>
-
-<span class="c1">#Compilation with Assertions</span>
-<span class="n">compiled_with_assertions_baleen</span> <span class="o">=</span> <span class="n">teleprompter</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">student</span> <span class="o">=</span> <span class="n">baleen</span><span class="p">,</span> <span class="n">teacher</span> <span class="o">=</span> <span class="n">baleen_with_assertions</span><span class="p">,</span> <span class="n">trainset</span> <span class="o">=</span> <span class="n">trainset</span><span class="p">,</span> <span class="n">valset</span> <span class="o">=</span> <span class="n">devset</span><span class="p">)</span>
-
-<span class="c1">#Compilation + Inference with Assertions</span>
-<span class="n">compiled_baleen_with_assertions</span> <span class="o">=</span> <span class="n">teleprompter</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">student</span><span class="o">=</span><span class="n">baleen_with_assertions</span><span class="p">,</span> <span class="n">teacher</span> <span class="o">=</span> <span class="n">baleen_with_assertions</span><span class="p">,</span> <span class="n">trainset</span><span class="o">=</span><span class="n">trainset</span><span class="p">,</span> <span class="n">valset</span><span class="o">=</span><span class="n">devset</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Recommended-Workflow">Recommended Workflow<a class="anchor-link" href="#Recommended-Workflow">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
+</div></section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -8922,7 +8696,7 @@ main {
 </div>
 </div>
 </div>
-</div>
+</div></section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -8937,7 +8711,7 @@ main {
 </div>
 </div>
 </div>
-</div>
+</div></section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -8953,7 +8727,7 @@ main {
 </div>
 </div>
 </div>
-</div>
+</div></section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -8969,7 +8743,7 @@ main {
 </div>
 </div>
 </div>
-</div>
+</div></section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -8984,7 +8758,7 @@ main {
 </div>
 </div>
 </div>
-</div>
+</div></section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -8997,7 +8771,7 @@ main {
 </div>
 </div>
 </div>
-</div>
+</div></section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -9017,7 +8791,7 @@ main {
 </div>
 </div>
 </div>
-</div>
+</div></section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -9039,7 +8813,7 @@ main {
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -9061,7 +8835,7 @@ main {
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -9081,43 +8855,14 @@ main {
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="References">References<a class="anchor-link" href="#References">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<ul>
-<li>Documentation: <a href="https://dspy-docs.vercel.app/intro/">https://dspy-docs.vercel.app/intro/</a></li>
-<li>DSPy cheatsheet: <a href="https://dspy-docs.vercel.app/cheatsheet">https://dspy-docs.vercel.app/cheatsheet</a></li>
-<li>GitHub: <a href="https://github.com/stanfordnlp/dspy">https://github.com/stanfordnlp/dspy</a></li>
-<li>Introduction by Author<ul>
-<li>Video: <a href="https://www.youtube.com/live/JEMYuzrKLUw?si=iwAzhwobN52zgIZ_">https://www.youtube.com/live/JEMYuzrKLUw?si=iwAzhwobN52zgIZ_</a></li>
-<li>Slides: <a href="https://llmagents-learning.org/slides/dspy_lec.pdf">https://llmagents-learning.org/slides/dspy_lec.pdf</a></li>
-</ul>
-</li>
-<li>Intro to DSPy: Goodbye Prompting, Hello Programming!: <a href="https://towardsdatascience.com/intro-to-dspy-goodbye-prompting-hello-programming-4ca1c6ce3eb9">https://towardsdatascience.com/intro-to-dspy-goodbye-prompting-hello-programming-4ca1c6ce3eb9</a></li>
-<li>Papers<ul>
-<li><a href="https://arxiv.org/abs/2310.03714">DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines</a></li>
-<li><a href="https://arxiv.org/abs/2312.13382">DSPy Assertions: Computational Constraints for Self-Refining Language Model Pipelines</a></li>
-<li><a href="https://arxiv.org/abs/2407.10930">Fine-Tuning and Prompt Optimization: Two Great Steps that Work Better Together</a></li>
-<li><a href="https://arxiv.org/abs/2406.11695">Optimizing Instructions and Demonstrations for Multi-Stage Language Model Programs</a></li>
-</ul>
-</li>
-<li>Roadmap: <a href="https://github.com/stanfordnlp/dspy/blob/main/docs/docs/roadmap.md">https://github.com/stanfordnlp/dspy/blob/main/docs/docs/roadmap.md</a></li>
-</ul>
+<h2 id="References">References<a class="anchor-link" href="#References">¶</a></h2><p>Please see the notebook for more detailed references.</p>
 </div>
 </div>
 </div>
@@ -9131,7 +8876,7 @@ main {
 </div>
 </div>
 </div>
-</div></div></section></section>
+</div></section></section>
 </div>
 </div>
 </main>
