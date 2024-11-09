@@ -7541,12 +7541,10 @@ main {
 <h3 id="Language-Models">Language Models<a class="anchor-link" href="#Language-Models">¶</a></h3><p>Notes:</p>
 <ul>
 <li>Earlier versions of DSPy involved tens of clients for different LM providers.(deprecated, and will be removed in DSPy 2.6) Starting from 2.5, use <code>dspy.LM</code> instead(using litellm under the hood)</li>
-<li>Inspecting history</li>
 <li>Adapters<ul>
 <li>DSPy 2.5 introduces <strong>Adapters</strong> as a layer between Signatures and LMs, responsible for formatting these pieces (Signature I/O fields, instructions, and examples) as well as generating and parsing the outputs.</li>
 </ul>
 </li>
-<li>Using <code>dspy.configure</code> and <code>dspy.context</code> is thread-safe!</li>
 <li>By default LMs in DSPy are cached. If you repeat the same call, you will get the same outputs. But you can turn off caching by setting <code>cache=False</code> while declaring <code>dspy.LM</code> object</li>
 <li>Any OpenAI-compatible endpoint is easy to set up with an <code>openai/</code> prefix as well.</li>
 </ul>
@@ -8065,6 +8063,18 @@ main {
 <li>Multiple modules can be composed into bigger modules (programs). DSPy modules are inspired directly by NN modules in PyTorch, but applied to LM programs.</li>
 </ul>
 </li>
+</ul>
+</div>
+</div>
+</div>
+</div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ul>
 <li>What other DSPy modules are there? How can I use them?<ul>
 <li>The others are very similar. They mainly change the internal behavior with which your signature is implemented!<ul>
 <li><code>dspy.Predict</code>: Basic predictor. Does not modify the signature. Handles the key forms of learning (i.e., storing the instructions and demonstrations and updates to the LM).</li>
@@ -8080,6 +8090,18 @@ main {
 </li>
 </ul>
 </li>
+</ul>
+</div>
+</div>
+</div>
+</div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ul>
 <li>How do I compose multiple modules into a bigger program?<ul>
 <li>DSPy is just Python code that uses modules in any control flow you like. (There's some magic internally at <code>compile</code> time to trace your LM calls.)</li>
 <li>This means that, you can just call the modules freely. No weird abstractions for chaining calls.</li>
@@ -8113,7 +8135,7 @@ main {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+</div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8136,7 +8158,7 @@ main {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+</div><div class="fragment"><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8150,7 +8172,7 @@ main {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+</div></div><div class="fragment"><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8164,7 +8186,7 @@ main {
 </div>
 </div>
 </div>
-</div>
+</div></div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -8177,6 +8199,18 @@ main {
 <li>For each example in your data, we distinguish typically between three types of values: the inputs, the intermediate labels, and the final label. You can use DSPy effectively without any intermediate or final labels, but you will need at least a few example inputs.</li>
 </ul>
 </li>
+</ul>
+</div>
+</div>
+</div>
+</div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ul>
 <li>How much data do I need and how do I collect data for my task?<ul>
 <li>Concretely, you can use DSPy optimizers usefully with as few as 10 example inputs, but having 50-100 examples (or even better, 300-500 examples) goes a long way.</li>
 <li>How can you get examples like these? If your task is extremely unusual, please invest in preparing ~10 examples by hand. Often times, depending on your metric below, you just need inputs and not labels, so it's not that hard.</li>
@@ -8184,6 +8218,18 @@ main {
 <li>If there's data whose licenses are permissive enough, we suggest you use them. Otherwise, you can also start using/deploying/demoing your system and collect some initial data that way.</li>
 </ul>
 </li>
+</ul>
+</div>
+</div>
+</div>
+</div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ul>
 <li>DSPy <code>Example</code> objects<ul>
 <li>The core data type for data in DSPy is Example. You will use Examples to represent items in your training set and test set.</li>
 <li>DSPy Examples are similar to Python dicts but have a few useful utilities. Your DSPy modules will return values of the type Prediction, which is a special sub-class of Example.</li>
@@ -8202,6 +8248,16 @@ main {
 </ul>
 </li>
 </ul>
+</div>
+</div>
+</div>
+</div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>References:</p>
 <ul>
 <li>documentation:<ul>
@@ -8220,7 +8276,7 @@ main {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+</div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8238,7 +8294,7 @@ main {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+</div><div class="fragment"><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8256,7 +8312,7 @@ main {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+</div></div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8276,7 +8332,7 @@ main {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+</div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8297,7 +8353,7 @@ main {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+</div><div class="fragment"><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8311,14 +8367,14 @@ main {
 </div>
 </div>
 </div>
-</div>
+</div></div></section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="Advanced:-Inside-DSPy's-Dataset-class">Advanced: Inside DSPy's <code>Dataset</code> class<a class="anchor-link" href="#Advanced:-Inside-DSPy's-Dataset-class">¶</a></h4>
+<h3 id="Inside-DSPy's-Dataset-class">Inside DSPy's <code>Dataset</code> class<a class="anchor-link" href="#Inside-DSPy's-Dataset-class">¶</a></h3>
 </div>
 </div>
 </div>
@@ -8330,67 +8386,10 @@ main {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><img alt="" src="https://dspy-docs.vercel.app/deep-dive/data-handling/img/data-loading.png"/></p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
-
-<span class="kn">from</span> <span class="nn">datasets</span> <span class="kn">import</span> <span class="n">load_dataset</span>
-
-<span class="kn">from</span> <span class="nn">dspy.datasets.dataset</span> <span class="kn">import</span> <span class="n">Dataset</span>
-
-
-<span class="k">class</span> <span class="nc">HotPotQA</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">only_hard_examples</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">keep_details</span><span class="o">=</span><span class="s1">'dev_titles'</span><span class="p">,</span> <span class="n">unofficial_dev</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="k">assert</span> <span class="n">only_hard_examples</span><span class="p">,</span> <span class="s2">"Care must be taken when adding support for easy examples."</span> \
-                                   <span class="s2">"Dev must be all hard to match official dev, but training can be flexible."</span>
-        
-        <span class="n">hf_official_train</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s2">"hotpot_qa"</span><span class="p">,</span> <span class="s1">'fullwiki'</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s1">'train'</span><span class="p">,</span> <span class="n">trust_remote_code</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-        <span class="n">hf_official_dev</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s2">"hotpot_qa"</span><span class="p">,</span> <span class="s1">'fullwiki'</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s1">'validation'</span><span class="p">,</span> <span class="n">trust_remote_code</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-        <span class="n">official_train</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">raw_example</span> <span class="ow">in</span> <span class="n">hf_official_train</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">raw_example</span><span class="p">[</span><span class="s1">'level'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'hard'</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">keep_details</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
-                    <span class="n">keys</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'id'</span><span class="p">,</span> <span class="s1">'question'</span><span class="p">,</span> <span class="s1">'answer'</span><span class="p">,</span> <span class="s1">'type'</span><span class="p">,</span> <span class="s1">'supporting_facts'</span><span class="p">,</span> <span class="s1">'context'</span><span class="p">]</span>
-                <span class="k">elif</span> <span class="n">keep_details</span> <span class="o">==</span> <span class="s1">'dev_titles'</span><span class="p">:</span>
-                    <span class="n">keys</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'question'</span><span class="p">,</span> <span class="s1">'answer'</span><span class="p">,</span> <span class="s1">'supporting_facts'</span><span class="p">]</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">keys</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'question'</span><span class="p">,</span> <span class="s1">'answer'</span><span class="p">]</span>
-
-                <span class="n">example</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">raw_example</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">}</span>
-                
-                <span class="k">if</span> <span class="s1">'supporting_facts'</span> <span class="ow">in</span> <span class="n">example</span><span class="p">:</span>
-                    <span class="n">example</span><span class="p">[</span><span class="s1">'gold_titles'</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">example</span><span class="p">[</span><span class="s1">'supporting_facts'</span><span class="p">][</span><span class="s1">'title'</span><span class="p">])</span>
-                    <span class="k">del</span> <span class="n">example</span><span class="p">[</span><span class="s1">'supporting_facts'</span><span class="p">]</span>
-
-                <span class="n">official_train</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">example</span><span class="p">)</span>
-
-        <span class="n">rng</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">Random</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-        <span class="n">rng</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">official_train</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">_train</span> <span class="o">=</span> <span class="n">official_train</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">official_train</span><span class="p">)</span><span class="o">*</span><span class="mi">75</span><span class="o">//</span><span class="mi">100</span><span class="p">]</span>
-
-        <span class="k">if</span> <span class="n">unofficial_dev</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_dev</span> <span class="o">=</span> <span class="n">official_train</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">official_train</span><span class="p">)</span><span class="o">*</span><span class="mi">75</span><span class="o">//</span><span class="mi">100</span><span class="p">:]</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_dev</span> <span class="o">=</span> <span class="kc">None</span>
-
-        <span class="k">for</span> <span class="n">example</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_train</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">keep_details</span> <span class="o">==</span> <span class="s1">'dev_titles'</span><span class="p">:</span>
-                <span class="k">del</span> <span class="n">example</span><span class="p">[</span><span class="s1">'gold_titles'</span><span class="p">]</span>
-        
-        <span class="n">test</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">raw_example</span> <span class="ow">in</span> <span class="n">hf_official_dev</span><span class="p">:</span>
-            <span class="k">assert</span> <span class="n">raw_example</span><span class="p">[</span><span class="s1">'level'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'hard'</span>
-            <span class="n">example</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">raw_example</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'id'</span><span class="p">,</span> <span class="s1">'question'</span><span class="p">,</span> <span class="s1">'answer'</span><span class="p">,</span> <span class="s1">'type'</span><span class="p">,</span> <span class="s1">'supporting_facts'</span><span class="p">]}</span>
-            <span class="k">if</span> <span class="s1">'supporting_facts'</span> <span class="ow">in</span> <span class="n">example</span><span class="p">:</span>
-                <span class="n">example</span><span class="p">[</span><span class="s1">'gold_titles'</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">example</span><span class="p">[</span><span class="s1">'supporting_facts'</span><span class="p">][</span><span class="s1">'title'</span><span class="p">])</span>
-                <span class="k">del</span> <span class="n">example</span><span class="p">[</span><span class="s1">'supporting_facts'</span><span class="p">]</span>
-            <span class="n">test</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">example</span><span class="p">)</span>
-</pre></div>
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -8413,7 +8412,7 @@ main {
 </div>
 </div>
 </div>
-</div>
+</div></section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -8424,7 +8423,7 @@ main {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+</div><div class="fragment"><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8439,7 +8438,7 @@ main {
 </div>
 </div>
 </div>
-</div>
+</div></div></section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -8450,7 +8449,7 @@ main {
 </div>
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -8468,18 +8467,18 @@ main {
 </div>
 </div>
 </div>
-</div>
+</div></div></section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="Intermediate:-Using-AI-feedback-for-your-metric">Intermediate: Using AI feedback for your metric<a class="anchor-link" href="#Intermediate:-Using-AI-feedback-for-your-metric">¶</a></h4>
+<h3 id="Using-AI-feedback-for-your-metric">Using AI feedback for your metric<a class="anchor-link" href="#Using-AI-feedback-for-your-metric">¶</a></h3>
 </div>
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -8494,9 +8493,18 @@ main {
     <span class="n">assessed_text</span> <span class="o">=</span> <span class="n">dspy</span><span class="o">.</span><span class="n">InputField</span><span class="p">()</span>
     <span class="n">assessment_question</span> <span class="o">=</span> <span class="n">dspy</span><span class="o">.</span><span class="n">InputField</span><span class="p">()</span>
     <span class="n">assessment_answer</span> <span class="o">=</span> <span class="n">dspy</span><span class="o">.</span><span class="n">OutputField</span><span class="p">(</span><span class="n">desc</span><span class="o">=</span><span class="s2">"Yes or No"</span><span class="p">)</span>
-
-
-<span class="n">gpt4T</span> <span class="o">=</span> <span class="n">dspy</span><span class="o">.</span><span class="n">OpenAI</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s1">'gpt-4-1106-preview'</span><span class="p">,</span> <span class="n">max_tokens</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">model_type</span><span class="o">=</span><span class="s1">'chat'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="highlight"><pre><span></span><span class="n">gpt4T</span> <span class="o">=</span> <span class="n">dspy</span><span class="o">.</span><span class="n">OpenAI</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s1">'gpt-4-1106-preview'</span><span class="p">,</span> <span class="n">max_tokens</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">model_type</span><span class="o">=</span><span class="s1">'chat'</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">metric</span><span class="p">(</span><span class="n">gold</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> <span class="n">trace</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">question</span><span class="p">,</span> <span class="n">answer</span><span class="p">,</span> <span class="n">tweet</span> <span class="o">=</span> <span class="n">gold</span><span class="o">.</span><span class="n">question</span><span class="p">,</span> <span class="n">gold</span><span class="o">.</span><span class="n">answer</span><span class="p">,</span> <span class="n">pred</span><span class="o">.</span><span class="n">output</span>
@@ -8517,18 +8525,18 @@ main {
 </div>
 </div>
 </div>
-</div>
+</div></section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="Advanced:-Using-a-DSPy-program-as-your-metric">Advanced: Using a DSPy program as your metric<a class="anchor-link" href="#Advanced:-Using-a-DSPy-program-as-your-metric">¶</a></h4>
+<h3 id="Using-a-DSPy-program-as-your-metric">Using a DSPy program as your metric<a class="anchor-link" href="#Using-a-DSPy-program-as-your-metric">¶</a></h3>
 </div>
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -9123,7 +9131,7 @@ main {
 </div>
 </div>
 </div>
-</div></section></section>
+</div></div></section></section>
 </div>
 </div>
 </main>
