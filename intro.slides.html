@@ -7921,18 +7921,19 @@ gpt-4o: Unknown
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Structured-LLM-output-with-Adapters">Structured LLM output with Adapters<a class="anchor-link" href="#Structured-LLM-output-with-Adapters">¶</a></h3><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lm</span><span class="p">,</span> <span class="n">lm_kwargs</span><span class="p">,</span> <span class="n">signature</span><span class="p">,</span> <span class="n">demos</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">_parse_values</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="n">inputs_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">signature</span><span class="p">,</span> <span class="n">demos</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span>
-        <span class="n">inputs_</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">prompt</span><span class="o">=</span><span class="n">inputs_</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inputs_</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="nb">dict</span><span class="p">(</span><span class="n">messages</span><span class="o">=</span><span class="n">inputs_</span><span class="p">)</span>
+<h3 id="Structured-LLM-output-with-Adapters">Structured LLM output with Adapters<a class="anchor-link" href="#Structured-LLM-output-with-Adapters">¶</a></h3><div class="highlight"><pre><span></span><span class="c1"># source code: https://github.com/stanfordnlp/dspy/blob/main/dspy/adapters/base.py</span>
+<span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lm</span><span class="p">,</span> <span class="n">lm_kwargs</span><span class="p">,</span> <span class="n">signature</span><span class="p">,</span> <span class="n">demos</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">_parse_values</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">inputs_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">signature</span><span class="p">,</span> <span class="n">demos</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span>
+    <span class="n">inputs_</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">prompt</span><span class="o">=</span><span class="n">inputs_</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inputs_</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="nb">dict</span><span class="p">(</span><span class="n">messages</span><span class="o">=</span><span class="n">inputs_</span><span class="p">)</span>
 
-        <span class="n">outputs</span> <span class="o">=</span> <span class="n">lm</span><span class="p">(</span><span class="o">**</span><span class="n">inputs_</span><span class="p">,</span> <span class="o">**</span><span class="n">lm_kwargs</span><span class="p">)</span>
-        <span class="n">values</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">outputs</span> <span class="o">=</span> <span class="n">lm</span><span class="p">(</span><span class="o">**</span><span class="n">inputs_</span><span class="p">,</span> <span class="o">**</span><span class="n">lm_kwargs</span><span class="p">)</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="p">[]</span>
 
-        <span class="k">for</span> <span class="n">output</span> <span class="ow">in</span> <span class="n">outputs</span><span class="p">:</span>
-            <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">signature</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">_parse_values</span><span class="o">=</span><span class="n">_parse_values</span><span class="p">)</span>
-            <span class="k">assert</span> <span class="nb">set</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">==</span> <span class="nb">set</span><span class="p">(</span><span class="n">signature</span><span class="o">.</span><span class="n">output_fields</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="sa">f</span><span class="s2">"Expected </span><span class="si">{</span><span class="n">signature</span><span class="o">.</span><span class="n">output_fields</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="si">}</span><span class="s2"> but got </span><span class="si">{</span><span class="n">value</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span>
-            <span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">values</span>
+    <span class="k">for</span> <span class="n">output</span> <span class="ow">in</span> <span class="n">outputs</span><span class="p">:</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">signature</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">_parse_values</span><span class="o">=</span><span class="n">_parse_values</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="nb">set</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">==</span> <span class="nb">set</span><span class="p">(</span><span class="n">signature</span><span class="o">.</span><span class="n">output_fields</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="sa">f</span><span class="s2">"Expected </span><span class="si">{</span><span class="n">signature</span><span class="o">.</span><span class="n">output_fields</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="si">}</span><span class="s2"> but got </span><span class="si">{</span><span class="n">value</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span>
+        <span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">values</span>
 </pre></div>
 </div>
 </div>
@@ -7944,18 +7945,7 @@ gpt-4o: Unknown
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Signatures">Signatures<a class="anchor-link" href="#Signatures">¶</a></h3>
-</div>
-</div>
-</div>
-</div></section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>When we assign tasks to LMs in DSPy, we specify the behavior we need as a Signature.</p>
+<h3 id="Signatures">Signatures<a class="anchor-link" href="#Signatures">¶</a></h3><p>When we assign tasks to LMs in DSPy, we specify the behavior we need as a Signature.</p>
 <p>A signature is a declarative specification of input/output behavior of a DSPy module. Signatures allow you to tell the LM what it needs to do, rather than specify how we should ask the LM to do it.</p>
 <p>You're probably familiar with function signatures, which specify the input and output arguments and their types. DSPy signatures are similar, but the differences are that:</p>
 <ul>
